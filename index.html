@@ -25,14 +25,20 @@
       <span class="name">Cas<b>a</b>va</span>
     </a>
     <nav class="links">
-      <a href="#climatizador">Climatizador</a>
-      <a href="#zapatero">Zapatero</a>
-      <a href="#porque">Por qué Casava</a>
+      <a href="#climatizador" data-en="Air cooler">Climatizador</a>
+      <a href="#zapatero" data-en="Shoe rack">Zapatero</a>
+      <a href="#porque" data-en="Why Casava">Por qué Casava</a>
     </nav>
-    <button class="cart-btn" onclick="openCart()">
-      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
-      Cesta <span class="count" id="cartCount">0</span>
-    </button>
+    <div class="nav-right">
+      <div class="langtoggle" role="group" aria-label="Idioma / Language">
+        <button class="lang-opt on" data-l="es" onclick="setLang('es')">ES</button>
+        <button class="lang-opt" data-l="en" onclick="setLang('en')">EN</button>
+      </div>
+      <button class="cart-btn" onclick="openCart()">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+        <span class="label" data-en="Cart">Cesta</span> <span class="count" id="cartCount">0</span>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -40,87 +46,93 @@
 <section class="hero">
   <div class="orbs"><div class="orb a"></div><div class="orb b"></div></div>
   <div class="wrap">
-    <span class="eyebrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="12" cy="12" r="5"/><path d="M12 1v3M12 20v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M1 12h3M20 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg> Listo para el verano · Hecho para España</span>
-    <h1>Tu casa, <em>fresca</em> y <em>ordenada</em>. Sin obras, sin líos.</h1>
-    <p class="sub">Dos esenciales elegidos a mano: el climatizador que refresca sin disparar la luz y el zapatero modular que devuelve el orden a tu entrada. Stock en España y envío en 24–48 h.</p>
+    <span class="eyebrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="12" cy="12" r="5"/><path d="M12 1v3M12 20v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M1 12h3M20 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg> <span data-en="Ready for summer · Made for Spain">Listo para el verano · Hecho para España</span></span>
+    <h1 data-en="Your home, <em>cool</em> and <em>tidy</em>. No works, no fuss.">Tu casa, <em>fresca</em> y <em>ordenada</em>. Sin obras, sin líos.</h1>
+    <p class="sub" data-en="Two hand-picked essentials: the air cooler that refreshes without spiking your bill, and the modular shoe rack that brings order back to your hallway. Stock in Spain, delivery in 24–48 h.">Dos esenciales elegidos a mano: el climatizador que refresca sin disparar la luz y el zapatero modular que devuelve el orden a tu entrada. Stock en España y envío en 24–48 h.</p>
     <div class="hero-cta">
-      <button class="btn3d" onclick="scrollTo2('climatizador')">Ver el climatizador</button>
-      <button class="btn-ghost" onclick="scrollTo2('zapatero')">Ver el zapatero →</button>
+      <button class="btn3d" onclick="scrollTo2('climatizador')" data-en="View the cooler">Ver el climatizador</button>
+      <button class="btn-ghost" onclick="scrollTo2('zapatero')" data-en="View the shoe rack →">Ver el zapatero →</button>
     </div>
     <div class="hero-mini">
-      <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg> Envío 24–48 h</span>
-      <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Pago seguro · Bizum</span>
-      <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Garantía 2 años</span>
+      <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg> <span data-en="Delivery 24–48 h">Envío 24–48 h</span></span>
+      <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> <span data-en="Secure payment · Bizum">Pago seguro · Bizum</span></span>
+      <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> <span data-en="2-year warranty">Garantía 2 años</span></span>
     </div>
   </div>
 </section>
 
-<!-- ===== PRODUCT 1: CLIMATIZADOR ===== -->
+<!-- ===== CLIMATIZADOR (fotos image6–image10) ===== -->
 <section class="product" id="climatizador">
   <div class="wrap">
     <div class="grid">
       <div class="pgallery reveal">
         <div class="pmain">
-          <div class="float-chip c1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M12 3v18"/></svg> 4 funciones<small>en 1 aparato</small></div>
-          <div class="float-chip c2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg> Solo 65 W<small>bajo consumo</small></div>
+          <div class="float-chip c1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M12 3v18"/></svg> <span data-en="4 functions">4 funciones</span><small data-en="in 1 device">en 1 aparato</small></div>
+          <div class="float-chip c2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg> <span>65 W</span><small data-en="low consumption">bajo consumo</small></div>
           <svg class="illo" viewBox="0 0 200 240" fill="none" aria-hidden="true">
             <rect x="50" y="30" width="100" height="178" rx="16" fill="#fff" stroke="#0FB5A6" stroke-width="3"/>
             <rect x="64" y="46" width="72" height="56" rx="8" fill="#CFF3EE"/>
             <line x1="64" y1="60" x2="136" y2="60" stroke="#0FB5A6" stroke-width="2.4"/><line x1="64" y1="74" x2="136" y2="74" stroke="#0FB5A6" stroke-width="2.4"/><line x1="64" y1="88" x2="136" y2="88" stroke="#0FB5A6" stroke-width="2.4"/>
-            <rect x="70" y="112" width="60" height="44" rx="8" fill="none" stroke="#0FB5A6" stroke-width="2" stroke-dasharray="3 4"/>
             <circle cx="100" cy="170" r="15" fill="none" stroke="#FF7A59" stroke-width="3"/><path d="M100 160a10 10 0 0 1 0 20" stroke="#FF7A59" stroke-width="3" fill="none"/>
             <circle cx="64" cy="198" r="7" fill="#0FB5A6"/><circle cx="136" cy="198" r="7" fill="#0FB5A6"/>
             <path d="M156 56q18 8 0 16 M164 82q18 8 0 16 M156 108q18 8 0 16" stroke="#7FE6DC" stroke-width="3" fill="none" stroke-linecap="round"/>
           </svg>
+          <img class="pphoto" id="climMain" src="fotos/image6.jpg" alt="Climatizador evaporativo Airvecove" onerror="imgFail(this)">
+        </div>
+        <div class="thumbs">
+          <button class="thumb sel" onclick="setMain('climMain','fotos/image6.jpg',this)"><img src="fotos/image6.jpg" alt="" onerror="thumbFail(this)"></button>
+          <button class="thumb" onclick="setMain('climMain','fotos/image7.jpg',this)"><img src="fotos/image7.jpg" alt="" onerror="thumbFail(this)"></button>
+          <button class="thumb" onclick="setMain('climMain','fotos/image8.jpg',this)"><img src="fotos/image8.jpg" alt="" onerror="thumbFail(this)"></button>
+          <button class="thumb" onclick="setMain('climMain','fotos/image9.jpg',this)"><img src="fotos/image9.jpg" alt="" onerror="thumbFail(this)"></button>
+          <button class="thumb" onclick="setMain('climMain','fotos/image10.jpg',this)"><img src="fotos/image10.jpg" alt="" onerror="thumbFail(this)"></button>
         </div>
       </div>
       <div class="pinfo reveal">
-        <span class="eyebrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-5 0V4.5A2.5 2.5 0 0 1 9.5 2zM12 8h3a2 2 0 0 1 2 2M12 14h6a2 2 0 0 1 2 2"/></svg> Climatizador evaporativo Airvecove</span>
-        <h2>Refresca cada habitación sin aire acondicionado.</h2>
-        <p class="lead">Ventila, refresca, humidifica y purifica el aire en un solo aparato. Enfría con agua —no con compresor— así que gasta poquísima luz y no necesita instalación: lo enchufas y listo.</p>
-        <div class="rating"><span class="stars">★★★★★</span> 4,8 · pensado para el calor seco del verano español</div>
+        <span class="eyebrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-5 0V4.5A2.5 2.5 0 0 1 9.5 2zM12 8h3a2 2 0 0 1 2 2M12 14h6a2 2 0 0 1 2 2"/></svg> <span data-en="Airvecove evaporative cooler">Climatizador evaporativo Airvecove</span></span>
+        <h2 data-en="Cool any room without air conditioning.">Refresca cada habitación sin aire acondicionado.</h2>
+        <p class="lead" data-en="Fan, cooler, humidifier and purifier in one device. It cools with water —not a compressor— so it uses very little electricity and needs no installation: just plug it in.">Ventila, refresca, humidifica y purifica el aire en un solo aparato. Enfría con agua —no con compresor— así que gasta poquísima luz y no necesita instalación: lo enchufas y listo.</p>
+        <div class="rating"><span class="stars">★★★★★</span> <span data-en="4.8 · made for Spain's dry summer heat">4,8 · pensado para el calor seco del verano español</span></div>
         <ul class="features">
-          <li><span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M12 3v18"/></svg></span><div><b>4 en 1: ventila, enfría, humidifica y purifica</b><span>Aire más limpio y fresco con filtro lavable extraíble.</span></div></li>
-          <li><span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v6M12 22v-6M4 12H2M22 12h-2"/><circle cx="12" cy="12" r="4"/></svg></span><div><b>Depósito de 5 L + 2 botellas congelables</b><span>Hielo extra para un frescor más intenso. Hasta ~4 h de autonomía.</span></div></li>
-          <li><span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h18M3 16h18"/></svg></span><div><b>3 velocidades + oscilación automática</b><span>Flujo de aire orientable, de brisa suave a ventilada potente.</span></div></li>
-          <li><span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/><path d="M5 18H3V8h14v10M17 8h2l2 4v6h-2"/></svg></span><div><b>4 ruedas 360° y dos asas</b><span>Llévalo del salón al dormitorio en segundos. Compacto y ligero.</span></div></li>
+          <li><span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M12 3v18"/></svg></span><div><b data-en="4-in-1: fan, cooler, humidifier &amp; purifier">4 en 1: ventila, enfría, humidifica y purifica</b><span data-en="Cleaner, fresher air with a washable removable filter.">Aire más limpio y fresco con filtro lavable extraíble.</span></div></li>
+          <li><span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v6M12 22v-6M4 12H2M22 12h-2"/><circle cx="12" cy="12" r="4"/></svg></span><div><b data-en="5 L tank + 2 freezer bottles">Depósito de 5 L + 2 botellas congelables</b><span data-en="Extra ice for stronger cooling. Up to ~4 h runtime.">Hielo extra para un frescor más intenso. Hasta ~4 h de autonomía.</span></div></li>
+          <li><span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h18M3 16h18"/></svg></span><div><b data-en="3 speeds + auto oscillation">3 velocidades + oscilación automática</b><span data-en="Adjustable airflow, from soft breeze to strong blow.">Flujo de aire orientable, de brisa suave a ventilada potente.</span></div></li>
+          <li><span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/><path d="M5 18H3V8h14v10M17 8h2l2 4v6h-2"/></svg></span><div><b data-en="4 × 360° wheels and two handles">4 ruedas 360° y dos asas</b><span data-en="Move it from living room to bedroom in seconds. Compact and light.">Llévalo del salón al dormitorio en segundos. Compacto y ligero.</span></div></li>
         </ul>
         <div class="buybar">
           <div class="priceblock">
-            <div class="price-row"><span class="price">64,99&nbsp;<small>€</small></span><span class="price-old">79,00 €</span></div>
-            <span class="save">Ahorras 14,01 € · −18%</span>
-            <span class="ivanote">IVA incluido · Envío gratis</span>
+            <div class="price-row"><span class="price" data-en="€64.99">64,99&nbsp;<small>€</small></span><span class="price-old" data-en="€79.00">79,00 €</span></div>
+            <span class="save" data-en="Save €14.01 · −18%">Ahorras 14,01 € · −18%</span>
+            <span class="ivanote" data-en="VAT included · Free shipping">IVA incluido · Envío gratis</span>
           </div>
-          <button class="btn3d" onclick="buy('Climatizador Evaporativo Airvecove',64.99)">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+          <button class="btn3d" onclick="buy(lang==='en'?'Evaporative Cooler Airvecove':'Climatizador Evaporativo Airvecove',64.99)" data-en="Buy · €64.99">
             Comprar · 64,99 €
           </button>
         </div>
         <div class="specs">
           <details class="specrow" open>
-            <summary>Qué incluye y para qué sirve <span class="plus">+</span></summary>
-            <div class="sc">Climatizador evaporativo 4 en 1 con depósito inferior extraíble de 5 L y depósito superior difusor conectados entre sí (bomba hasta 180 l/h), filtro lavable y reutilizable, 2 acumuladores de frío (botellas congelables), 4 ruedas giratorias 360° y 2 asas laterales. Recomendado para estancias de hasta 15 m². Ideal para dormitorios, salón, despacho o cocina.</div>
+            <summary><span data-en="What's included &amp; what it's for">Qué incluye y para qué sirve</span> <span class="plus">+</span></summary>
+            <div class="sc" data-en="4-in-1 evaporative cooler with a removable 5 L lower tank and an upper diffuser tank connected to each other (pump up to 180 l/h), washable reusable filter, 2 cold accumulators (freezer bottles), 4 × 360° swivel wheels and 2 side handles. Recommended for rooms up to 15 m². Ideal for bedrooms, living room, office or kitchen.">Climatizador evaporativo 4 en 1 con depósito inferior extraíble de 5 L y depósito superior difusor conectados entre sí (bomba hasta 180 l/h), filtro lavable y reutilizable, 2 acumuladores de frío (botellas congelables), 4 ruedas giratorias 360° y 2 asas laterales. Recomendado para estancias de hasta 15 m². Ideal para dormitorios, salón, despacho o cocina.</div>
           </details>
           <details class="specrow">
-            <summary>Ficha técnica completa <span class="plus">+</span></summary>
+            <summary><span data-en="Full specifications">Ficha técnica completa</span> <span class="plus">+</span></summary>
             <div class="sc"><table>
-              <tr><td>Potencia</td><td>65 W (bajo consumo)</td></tr>
-              <tr><td>Capacidad depósito</td><td>5 L</td></tr>
-              <tr><td>Velocidades</td><td>3 (alta / media / baja)</td></tr>
-              <tr><td>Oscilación</td><td>Vertical automática · pas horizontales manuales</td></tr>
-              <tr><td>Bomba de agua</td><td>180 L/h</td></tr>
-              <tr><td>Alcance</td><td>~15 m²</td></tr>
-              <tr><td>Nivel sonoro</td><td>≤ 55 dB</td></tr>
-              <tr><td>Autonomía</td><td>~4 h</td></tr>
-              <tr><td>Medidas</td><td>27 × 60 × 31,7 cm</td></tr>
-              <tr><td>Alimentación</td><td>220–240 V / 50 Hz · enchufe tipo F · cable 160 cm</td></tr>
-              <tr><td>Materiales</td><td>Polipropileno, polietileno, papel</td></tr>
-              <tr><td>Color</td><td>Blanco / gris</td></tr>
+              <tr><td data-en="Power">Potencia</td><td>65 W</td></tr>
+              <tr><td data-en="Tank capacity">Capacidad depósito</td><td>5 L</td></tr>
+              <tr><td data-en="Speeds">Velocidades</td><td data-en="3 (high / medium / low)">3 (alta / media / baja)</td></tr>
+              <tr><td data-en="Oscillation">Oscilación</td><td data-en="Auto vertical · manual horizontal louvers">Vertical automática · pas horizontales manuales</td></tr>
+              <tr><td data-en="Water pump">Bomba de agua</td><td>180 L/h</td></tr>
+              <tr><td data-en="Coverage">Alcance</td><td>~15 m²</td></tr>
+              <tr><td data-en="Noise level">Nivel sonoro</td><td>≤ 55 dB</td></tr>
+              <tr><td data-en="Runtime">Autonomía</td><td>~4 h</td></tr>
+              <tr><td data-en="Dimensions">Medidas</td><td>27 × 60 × 31,7 cm</td></tr>
+              <tr><td data-en="Power supply">Alimentación</td><td data-en="220–240 V / 50 Hz · type F plug · 160 cm cable">220–240 V / 50 Hz · enchufe tipo F · cable 160 cm</td></tr>
+              <tr><td data-en="Materials">Materiales</td><td data-en="Polypropylene, polyethylene, paper">Polipropileno, polietileno, papel</td></tr>
+              <tr><td data-en="Colour">Color</td><td data-en="White / grey">Blanco / gris</td></tr>
             </table></div>
           </details>
           <details class="specrow">
-            <summary>Cómo funciona (importante) <span class="plus">+</span></summary>
-            <div class="sc">No es un aire acondicionado: enfría el aire haciéndolo pasar por un filtro húmedo, como una brisa fresca natural. Por eso consume muy poco y no necesita tubo ni instalación. Rinde al máximo en ambientes secos y calurosos —justo el clima de la mayor parte de España en verano—. Para más frío, añade las botellas congeladas al depósito.</div>
+            <summary><span data-en="How it works (important)">Cómo funciona (importante)</span> <span class="plus">+</span></summary>
+            <div class="sc" data-en="It is not an air conditioner: it cools the air by passing it through a damp filter, like a natural fresh breeze. That's why it uses so little power and needs no hose or installation. It performs best in dry, hot environments —exactly the climate of most of Spain in summer—. For more cold, add the frozen bottles to the tank.">No es un aire acondicionado: enfría el aire haciéndolo pasar por un filtro húmedo, como una brisa fresca natural. Por eso consume muy poco y no necesita tubo ni instalación. Rinde al máximo en ambientes secos y calurosos —justo el clima de la mayor parte de España en verano—. Para más frío, añade las botellas congeladas al depósito.</div>
           </details>
         </div>
       </div>
@@ -128,69 +140,75 @@
   </div>
 </section>
 
-<!-- ===== PRODUCT 2: ZAPATERO ===== -->
+<!-- ===== ZAPATERO (fotos image1–image5) ===== -->
 <section class="product rev" id="zapatero">
   <div class="wrap">
     <div class="grid">
       <div class="pgallery reveal">
         <div class="pmain coral">
-          <div class="float-chip c1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E85D3C" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 10h16M10 4v16"/></svg> Hasta 36 pares<small>tú eliges</small></div>
-          <div class="float-chip c2"><svg width="18" height="18" viewBox="0 0 24 24" fill="#0FB5A6" stroke="none"><circle cx="12" cy="12" r="10"/></svg> Sin herramientas<small>montaje fácil</small></div>
+          <div class="float-chip c1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E85D3C" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 10h16M10 4v16"/></svg> <span data-en="Up to 36 pairs">Hasta 36 pares</span><small data-en="you choose">tú eliges</small></div>
+          <div class="float-chip c2"><svg width="18" height="18" viewBox="0 0 24 24" fill="#0FB5A6" stroke="none"><circle cx="12" cy="12" r="10"/></svg> <span data-en="No tools">Sin herramientas</span><small data-en="easy assembly">montaje fácil</small></div>
           <svg class="illo" viewBox="0 0 200 220" fill="none" aria-hidden="true">
             <rect x="44" y="20" width="112" height="180" rx="10" fill="#fff" stroke="#FF7A59" stroke-width="3"/>
             <line x1="44" y1="65" x2="156" y2="65" stroke="#FF7A59" stroke-width="2.6"/><line x1="44" y1="110" x2="156" y2="110" stroke="#FF7A59" stroke-width="2.6"/><line x1="44" y1="155" x2="156" y2="155" stroke="#FF7A59" stroke-width="2.6"/>
             <line x1="100" y1="20" x2="100" y2="200" stroke="#FF7A59" stroke-width="2.6"/>
-            <circle cx="72" cy="42" r="3" fill="#FF7A59"/><circle cx="128" cy="42" r="3" fill="#FF7A59"/><circle cx="72" cy="87" r="3" fill="#FF7A59"/><circle cx="128" cy="132" r="3" fill="#FF7A59"/>
             <path d="M58 50c5-5 14-5 22 0v8H58z" fill="#CFF3EE"/><path d="M120 95c5-5 14-5 22 0v8h-22z" fill="#CFF3EE"/><path d="M58 140c5-5 14-5 22 0v8H58z" fill="#CFF3EE"/>
             <path d="M156 36h16M172 36v22M172 58h-8" stroke="#0FB5A6" stroke-width="2.6" stroke-linecap="round" fill="none"/>
           </svg>
+          <img class="pphoto" id="zapMain" src="fotos/image1.jpg" alt="Zapatero modular portátil" onerror="imgFail(this)">
+        </div>
+        <div class="thumbs">
+          <button class="thumb sel" onclick="setMain('zapMain','fotos/image1.jpg',this)"><img src="fotos/image1.jpg" alt="" onerror="thumbFail(this)"></button>
+          <button class="thumb" onclick="setMain('zapMain','fotos/image2.jpg',this)"><img src="fotos/image2.jpg" alt="" onerror="thumbFail(this)"></button>
+          <button class="thumb" onclick="setMain('zapMain','fotos/image3.jpg',this)"><img src="fotos/image3.jpg" alt="" onerror="thumbFail(this)"></button>
+          <button class="thumb" onclick="setMain('zapMain','fotos/image4.jpg',this)"><img src="fotos/image4.jpg" alt="" onerror="thumbFail(this)"></button>
+          <button class="thumb" onclick="setMain('zapMain','fotos/image5.jpg',this)"><img src="fotos/image5.jpg" alt="" onerror="thumbFail(this)"></button>
         </div>
       </div>
       <div class="pinfo coral reveal">
-        <span class="eyebrow coral"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 4h16v16H4zM4 10h16M10 4v16"/></svg> Zapatero modular portátil</span>
-        <h2>Recupera el orden (y el espacio) de tu entrada.</h2>
-        <p class="lead">Un mueble modular que se adapta a ti: con o sin puertas, con o sin baldas, en tres tamaños. Guarda hasta 36 pares y, si quieres, también juguetes, libros o bolsos. Se monta en minutos, sin herramientas.</p>
-        <div class="rating"><span class="stars">★★★★★</span> 4,7 · el favorito para recibidores y armarios</div>
+        <span class="eyebrow coral"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 4h16v16H4zM4 10h16M10 4v16"/></svg> <span data-en="Portable modular shoe rack">Zapatero modular portátil</span></span>
+        <h2 data-en="Get back the order (and space) of your hallway.">Recupera el orden (y el espacio) de tu entrada.</h2>
+        <p class="lead" data-en="A modular unit that adapts to you: with or without doors, with or without shelves, in three sizes. Stores up to 36 pairs and, if you like, toys, books or bags too. Assembles in minutes, no tools needed.">Un mueble modular que se adapta a ti: con o sin puertas, con o sin baldas, en tres tamaños. Guarda hasta 36 pares y, si quieres, también juguetes, libros o bolsos. Se monta en minutos, sin herramientas.</p>
+        <div class="rating"><span class="stars">★★★★★</span> <span data-en="4.7 · the favourite for hallways and closets">4,7 · el favorito para recibidores y armarios</span></div>
         <ul class="features">
-          <li><span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4zM4 12h16M12 4v16"/></svg></span><div><b>100% modular y combinable</b><span>Móntalo a tu medida: más alto, más ancho, con o sin puertas.</span></div></li>
-          <li><span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg></span><div><b>Puertas con ventilación</b><span>Orificios que dejan circular el aire y evitan malos olores.</span></div></li>
-          <li><span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M6 6v14M18 6v14M4 20h16"/></svg></span><div><b>Incluye perchero metálico lateral</b><span>Para bolsos, cinturones, paraguas o complementos.</span></div></li>
-          <li><span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2l8 8-4 4-8-8zM6 10l-4 4 6 6 4-4"/></svg></span><div><b>Montaje sin herramientas</b><span>Incluye martillo de madera y guía paso a paso.</span></div></li>
+          <li><span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4zM4 12h16M12 4v16"/></svg></span><div><b data-en="100% modular and combinable">100% modular y combinable</b><span data-en="Build it your way: taller, wider, with or without doors.">Móntalo a tu medida: más alto, más ancho, con o sin puertas.</span></div></li>
+          <li><span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg></span><div><b data-en="Doors with ventilation">Puertas con ventilación</b><span data-en="Holes that let air flow and prevent bad smells.">Orificios que dejan circular el aire y evitan malos olores.</span></div></li>
+          <li><span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M6 6v14M18 6v14M4 20h16"/></svg></span><div><b data-en="Includes side metal hook rack">Incluye perchero metálico lateral</b><span data-en="For bags, belts, umbrellas or accessories.">Para bolsos, cinturones, paraguas o complementos.</span></div></li>
+          <li><span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2l8 8-4 4-8-8zM6 10l-4 4 6 6 4-4"/></svg></span><div><b data-en="Tool-free assembly">Montaje sin herramientas</b><span data-en="Includes a wooden mallet and a step-by-step guide.">Incluye martillo de madera y guía paso a paso.</span></div></li>
         </ul>
         <div class="variants">
-          <div class="vlabel">Elige tu capacidad</div>
+          <div class="vlabel" data-en="Choose your capacity">Elige tu capacidad</div>
           <div class="vopts" id="vopts">
-            <div class="vopt" data-cap="20 pares" data-dim="84 × 96 × 32 cm" onclick="selVar(this)"><b>20</b><span>pares · 6 módulos</span></div>
-            <div class="vopt sel" data-cap="28 pares" data-dim="84 × 128 × 32 cm" onclick="selVar(this)"><b>28</b><span>pares · 8 módulos</span></div>
-            <div class="vopt" data-cap="36 pares" data-dim="84 × 160 × 32 cm" onclick="selVar(this)"><b>36</b><span>pares · 10 módulos</span></div>
+            <div class="vopt" data-cap="20 pares" onclick="selVar(this)"><b>20</b><span data-en="pairs · 6 modules">pares · 6 módulos</span></div>
+            <div class="vopt sel" data-cap="28 pares" onclick="selVar(this)"><b>28</b><span data-en="pairs · 8 modules">pares · 8 módulos</span></div>
+            <div class="vopt" data-cap="36 pares" onclick="selVar(this)"><b>36</b><span data-en="pairs · 10 modules">pares · 10 módulos</span></div>
           </div>
         </div>
         <div class="buybar">
           <div class="priceblock">
-            <div class="price-row"><span class="price">49,99&nbsp;<small>€</small></span></div>
-            <span class="ivanote">IVA incluido · Envío gratis en pedidos +59 €</span>
+            <div class="price-row"><span class="price" data-en="€49.99">49,99&nbsp;<small>€</small></span></div>
+            <span class="ivanote" data-en="VAT included · Free shipping over €59">IVA incluido · Envío gratis en pedidos +59 €</span>
           </div>
-          <button class="btn3d coral" onclick="buyZapatero()">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+          <button class="btn3d coral" onclick="buyZapatero()" data-en="Buy · €49.99">
             Comprar · 49,99 €
           </button>
         </div>
         <div class="specs">
           <details class="specrow" open>
-            <summary>Qué incluye y para qué sirve <span class="plus">+</span></summary>
-            <div class="sc">Zapatero modular compuesto por módulos desmontables con baldas, puertas opcionales con orificios de ventilación y perchero metálico lateral. Multiusos: zapatos, juguetes, libros, maletas, complementos. Perfecto para recibidores, armarios, baños, pasillos, garajes o trasteros. Modelos: Grevoux / Grevout / Grevoun.</div>
+            <summary><span data-en="What's included &amp; what it's for">Qué incluye y para qué sirve</span> <span class="plus">+</span></summary>
+            <div class="sc" data-en="Modular shoe rack made of detachable modules with shelves, optional doors with ventilation holes and a side metal hook rack. Multipurpose: shoes, toys, books, bags, accessories. Perfect for hallways, closets, bathrooms, corridors, garages or storage rooms. Models: Grevoux / Grevout / Grevoun.">Zapatero modular compuesto por módulos desmontables con baldas, puertas opcionales con orificios de ventilación y perchero metálico lateral. Multiusos: zapatos, juguetes, libros, maletas, complementos. Perfecto para recibidores, armarios, baños, pasillos, garajes o trasteros. Modelos: Grevoux / Grevout / Grevoun.</div>
           </details>
           <details class="specrow">
-            <summary>Ficha técnica completa <span class="plus">+</span></summary>
+            <summary><span data-en="Full specifications">Ficha técnica completa</span> <span class="plus">+</span></summary>
             <div class="sc"><table>
-              <tr><td>Tipo</td><td>Zapatero modular portátil</td></tr>
-              <tr><td>Materiales</td><td>Polipropileno, ABS y hierro</td></tr>
-              <tr><td>Color</td><td>Gris</td></tr>
-              <tr><td>Incluye</td><td>Perchero metálico + martillo de madera</td></tr>
-              <tr><td>20 pares</td><td>6 módulos · 10 compartimentos · 84 × 96 × 32 cm</td></tr>
-              <tr><td>28 pares</td><td>8 módulos · 14 compartimentos · 84 × 128 × 32 cm</td></tr>
-              <tr><td>36 pares</td><td>10 módulos · 18 compartimentos · 84 × 160 × 32 cm</td></tr>
-              <tr><td>Montaje</td><td>Sin herramientas, con guía incluida</td></tr>
+              <tr><td data-en="Type">Tipo</td><td data-en="Portable modular shoe rack">Zapatero modular portátil</td></tr>
+              <tr><td data-en="Materials">Materiales</td><td data-en="Polypropylene, ABS and iron">Polipropileno, ABS y hierro</td></tr>
+              <tr><td data-en="Colour">Color</td><td data-en="Grey">Gris</td></tr>
+              <tr><td data-en="Includes">Incluye</td><td data-en="Metal hook rack + wooden mallet">Perchero metálico + martillo de madera</td></tr>
+              <tr><td>20</td><td data-en="6 modules · 10 compartments · 84 × 96 × 32 cm">6 módulos · 10 compartimentos · 84 × 96 × 32 cm</td></tr>
+              <tr><td>28</td><td data-en="8 modules · 14 compartments · 84 × 128 × 32 cm">8 módulos · 14 compartimentos · 84 × 128 × 32 cm</td></tr>
+              <tr><td>36</td><td data-en="10 modules · 18 compartments · 84 × 160 × 32 cm">10 módulos · 18 compartimentos · 84 × 160 × 32 cm</td></tr>
+              <tr><td data-en="Assembly">Montaje</td><td data-en="Tool-free, guide included">Sin herramientas, con guía incluida</td></tr>
             </table></div>
           </details>
         </div>
@@ -203,15 +221,15 @@
 <section class="why" id="porque">
   <div class="wrap">
     <div class="sec reveal">
-      <span class="eyebrow">Por qué comprar en Casava</span>
-      <h2>Menos catálogo, más confianza.</h2>
-      <p>No vendemos de todo. Elegimos pocos productos, los probamos y nos quedamos solo con los que de verdad merecen la pena.</p>
+      <span class="eyebrow" data-en="Why buy at Casava">Por qué comprar en Casava</span>
+      <h2 data-en="Less catalogue, more trust.">Menos catálogo, más confianza.</h2>
+      <p data-en="We don't sell everything. We pick a few products, test them and keep only the ones truly worth it.">No vendemos de todo. Elegimos pocos productos, los probamos y nos quedamos solo con los que de verdad merecen la pena.</p>
     </div>
     <div class="why-grid">
-      <div class="why-card reveal"><div class="wic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><h4>Envío 24–48 h</h4><p>Desde nuestro almacén en España, no de China.</p></div>
-      <div class="why-card reveal"><div class="wic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div><h4>Pago seguro</h4><p>Bizum, tarjeta o PayPal. Cifrado de principio a fin.</p></div>
-      <div class="why-card reveal"><div class="wic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9"/><path d="M3 3v6h6"/></svg></div><h4>30 días para devolver</h4><p>Si no te convence, te devolvemos el dinero.</p></div>
-      <div class="why-card reveal"><div class="wic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></div><h4>Garantía 2 años</h4><p>Productos con certificación europea.</p></div>
+      <div class="why-card reveal"><div class="wic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><h4 data-en="Delivery 24–48 h">Envío 24–48 h</h4><p data-en="From our warehouse in Spain, not from China.">Desde nuestro almacén en España, no de China.</p></div>
+      <div class="why-card reveal"><div class="wic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div><h4 data-en="Secure payment">Pago seguro</h4><p data-en="Bizum, card or PayPal. Encrypted end to end.">Bizum, tarjeta o PayPal. Cifrado de principio a fin.</p></div>
+      <div class="why-card reveal"><div class="wic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9"/><path d="M3 3v6h6"/></svg></div><h4 data-en="30-day returns">30 días para devolver</h4><p data-en="If it's not for you, we refund your money.">Si no te convence, te devolvemos el dinero.</p></div>
+      <div class="why-card reveal"><div class="wic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></div><h4 data-en="2-year warranty">Garantía 2 años</h4><p data-en="Products with European certification.">Productos con certificación europea.</p></div>
     </div>
   </div>
 </section>
@@ -221,9 +239,9 @@
   <div class="wrap">
     <div class="box reveal">
       <div class="seal"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
-      <h2>Compra tranquila, o te devolvemos el dinero.</h2>
-      <p>Tienes 30 días para probar tu compra en casa. Si no es para ti, gestionamos la devolución y te reembolsamos. Así de simple.</p>
-      <button class="btn3d ink" onclick="scrollTo2('climatizador')">Empezar a comprar</button>
+      <h2 data-en="Shop with confidence, or your money back.">Compra tranquila, o te devolvemos el dinero.</h2>
+      <p data-en="You have 30 days to try your purchase at home. If it's not for you, we handle the return and refund you. Simple as that.">Tienes 30 días para probar tu compra en casa. Si no es para ti, gestionamos la devolución y te reembolsamos. Así de simple.</p>
+      <button class="btn3d ink" onclick="scrollTo2('climatizador')" data-en="Start shopping">Empezar a comprar</button>
     </div>
   </div>
 </section>
@@ -237,20 +255,20 @@
           <svg width="34" height="34" viewBox="0 0 40 40" fill="none"><defs><linearGradient id="g2" x1="0" y1="0" x2="40" y2="40"><stop offset="0" stop-color="#0FB5A6"/><stop offset="1" stop-color="#15D6C4"/></linearGradient></defs><rect x="3" y="3" width="34" height="34" rx="11" fill="url(#g2)"/><path d="M11 21 L20 12 L29 21" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.5 20 V28 H26.5 V20" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="20" cy="24" r="1.9" fill="#fff"/></svg>
           <span class="name" style="color:#fff">Cas<b style="color:#15D6C4">a</b>va</span>
         </div>
-        <p style="font-size:14px;max-width:300px;margin:0">Casa moderna, fresca y ordenada. Selección de productos para el hogar con stock y envío en España.</p>
+        <p style="font-size:14px;max-width:300px;margin:0" data-en="Modern home: cool and tidy. A selection of home products with stock and shipping in Spain.">Casa moderna, fresca y ordenada. Selección de productos para el hogar con stock y envío en España.</p>
         <div class="pay"><span class="bizum">Bizum</span><span>VISA</span><span>Mastercard</span><span class="pp">PayPal</span></div>
       </div>
-      <div><h4>Tienda</h4><a href="#climatizador">Climatizador evaporativo</a><a href="#zapatero">Zapatero modular</a></div>
-      <div><h4>Ayuda</h4><a href="#">Envíos y plazos</a><a href="#">Devoluciones</a><a href="#">Contacto</a><a href="#">Aviso legal</a></div>
+      <div><h4 data-en="Shop">Tienda</h4><a href="#climatizador" data-en="Evaporative cooler">Climatizador evaporativo</a><a href="#zapatero" data-en="Modular shoe rack">Zapatero modular</a></div>
+      <div><h4 data-en="Help">Ayuda</h4><a href="#" data-en="Shipping &amp; times">Envíos y plazos</a><a href="#" data-en="Returns">Devoluciones</a><a href="#" data-en="Contact">Contacto</a><a href="#" data-en="Legal notice">Aviso legal</a></div>
     </div>
-    <div class="legal"><span>© 2026 Casava. Todos los derechos reservados.</span><span>Hecho en España · IVA incluido</span></div>
+    <div class="legal"><span data-en="© 2026 Casava. All rights reserved.">© 2026 Casava. Todos los derechos reservados.</span><span data-en="Made in Spain · VAT included">Hecho en España · IVA incluido</span></div>
   </div>
 </footer>
 
 <!-- STICKY BUY BAR -->
 <div class="sticky" id="sticky">
   <div class="wrap">
-    <div class="sp"><b id="stickyName">Climatizador Evaporativo</b><span class="sprice" id="stickyPrice">64,99 €</span> <span class="sub-hide" style="color:#6B675F;font-size:13px">· IVA incluido · envío gratis</span></div>
+    <div class="sp"><b id="stickyName">Climatizador Evaporativo</b><span class="sprice" id="stickyPrice">64,99 €</span> <span class="sub-hide" id="stickySub" style="color:#6B675F;font-size:13px">· IVA incluido · envío gratis</span></div>
     <button class="btn3d" id="stickyBtn" onclick="stickyBuy()">Comprar ahora</button>
   </div>
 </div>
@@ -258,7 +276,7 @@
 <!-- MODAL -->
 <div class="overlay" id="overlay">
   <div class="modal">
-    <div class="mh"><h3 id="modalTitle">Tu cesta</h3><button class="x" onclick="closeModal()" aria-label="Cerrar">×</button></div>
+    <div class="mh"><h3 id="modalTitle">Tu cesta</h3><button class="x" onclick="closeModal()" aria-label="Cerrar / Close">×</button></div>
     <div class="mb" id="modalBody"></div>
   </div>
 </div>

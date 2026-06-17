@@ -1,19 +1,74 @@
-// Marca que o JS está ativo: o CSS só esconde os .reveal quando existe .js.
-// Assim, se o JS falhar, todo o conteúdo do produto continua visível.
+// JS ativo: o CSS só esconde .reveal quando existe .js, então o conteúdo nunca some se o JS falhar.
 document.documentElement.classList.add('js');
 
-const fmt = n => n.toFixed(2).replace('.', ',') + ' €';
+let lang = 'es';
 let cart = [];
 let zapCap = '28 pares';
 let payMethod = 'bizum';
+let curKey = 'clim';
+const curPrice = { clim: 64.99, zap: 49.99 };
 
+// textos dinâmicos (carrinho/checkout/sticky) por idioma
+const T = {
+  es:{
+    empty:'Tu cesta está vacía.', cartTitle:'Tu cesta', shipping:'Envío', free:'gratis',
+    missing:p=>`Te faltan ${p} para el envío gratis.`, total:'Total',
+    gopay:p=>`Ir a pagar · ${p}`, secure:'Pago 100% seguro · IVA incluido',
+    checkoutTitle:'Finalizar compra', totalpay:'Total a pagar', method:'Método de pago',
+    bizumB:'El más usado en España', cardB:'Visa · Mastercard', ppB:'Protección al comprador',
+    pay:p=>`Pagar ${p}`, okTitle:'¡Pedido confirmado!', thanks:'Gracias por tu compra',
+    okText:m=>`Pago con ${m} recibido. Te enviaremos la confirmación y el seguimiento por email. Entrega estimada: 24–48 h.`,
+    keep:'Seguir comprando', secure2:'Conexión cifrada · Tus datos están protegidos',
+    stickyBuy:'Comprar ahora', stickySub:'· IVA incluido · envío gratis',
+    clim:'Climatizador Evaporativo', zap:'Zapatero Modular', tarjeta:'tarjeta'
+  },
+  en:{
+    empty:'Your cart is empty.', cartTitle:'Your cart', shipping:'Shipping', free:'free',
+    missing:p=>`You're ${p} away from free shipping.`, total:'Total',
+    gopay:p=>`Go to checkout · ${p}`, secure:'100% secure payment · VAT included',
+    checkoutTitle:'Checkout', totalpay:'Total to pay', method:'Payment method',
+    bizumB:'Most used in Spain', cardB:'Visa · Mastercard', ppB:'Buyer protection',
+    pay:p=>`Pay ${p}`, okTitle:'Order confirmed!', thanks:'Thanks for your purchase',
+    okText:m=>`Payment with ${m} received. We'll email you the confirmation and tracking. Estimated delivery: 24–48 h.`,
+    keep:'Keep shopping', secure2:'Encrypted connection · Your data is protected',
+    stickyBuy:'Buy now', stickySub:'· VAT incl. · free shipping',
+    clim:'Evaporative Cooler', zap:'Modular Shoe Rack', tarjeta:'card'
+  }
+};
+
+function fmt(n){ return lang === 'en' ? '€' + n.toFixed(2) : n.toFixed(2).replace('.', ',') + ' €'; }
+
+/* ---------- IDIOMA ---------- */
+function setLang(l){
+  lang = l;
+  document.documentElement.lang = l;
+  document.querySelectorAll('[data-en]').forEach(el => {
+    if(el.dataset.es === undefined) el.dataset.es = el.innerHTML.trim();
+    el.innerHTML = (l === 'en') ? el.dataset.en : el.dataset.es;
+  });
+  document.querySelectorAll('.lang-opt').forEach(o => o.classList.toggle('on', o.dataset.l === l));
+  updateSticky();
+}
+
+/* ---------- GALERIA ---------- */
+function setMain(id, src, thumb){
+  const img = document.getElementById(id);
+  img.src = src; img.style.display = 'block';
+  thumb.parentElement.querySelectorAll('.thumb').forEach(t => t.classList.remove('sel'));
+  thumb.classList.add('sel');
+}
+function imgFail(img){ img.style.display = 'none'; }          // some a ilustração de reserva
+function thumbFail(img){ const b = img.closest('.thumb'); if(b) b.style.display = 'none'; }
+
+/* ---------- VARIANTE ---------- */
 function selVar(el){
   document.querySelectorAll('#vopts .vopt').forEach(o => o.classList.remove('sel'));
   el.classList.add('sel');
   zapCap = el.dataset.cap;
 }
-function buyZapatero(){ buy('Zapatero Modular (' + zapCap + ')', 49.99); }
+function buyZapatero(){ buy((lang==='en'?'Modular Shoe Rack':'Zapatero Modular') + ' (' + zapCap + ')', 49.99); }
 
+/* ---------- CARRINHO ---------- */
 function addToCart(name, price){
   const e = cart.find(i => i.name === name);
   if(e) e.qty++; else cart.push({ name, price, qty:1 });
@@ -23,98 +78,90 @@ function buy(name, price){ addToCart(name, price); openCart(); }
 function subtotal(){ return cart.reduce((a,i)=>a+i.price*i.qty,0); }
 
 function openCart(){
+  const t = T[lang];
   if(!cart.length){
-    document.getElementById('modalTitle').textContent = 'Tu cesta';
-    document.getElementById('modalBody').innerHTML = '<p style="color:#6B675F;text-align:center;padding:18px 0">Tu cesta está vacía.</p>';
+    document.getElementById('modalTitle').textContent = t.cartTitle;
+    document.getElementById('modalBody').innerHTML = `<p style="color:#6B675F;text-align:center;padding:18px 0">${t.empty}</p>`;
     show(); return;
   }
   renderCart(); show();
 }
-
 function renderCart(){
-  document.getElementById('modalTitle').textContent = 'Tu cesta';
-  const sub = subtotal(), free = sub >= 59, ship = free ? 0 : 4.99;
+  const t = T[lang], sub = subtotal(), free = sub >= 59, ship = free ? 0 : 4.99;
   const rows = cart.map(i => `<div class="li"><span>${i.name} ${i.qty>1?'× '+i.qty:''}</span><span>${fmt(i.price*i.qty)}</span></div>`).join('');
+  document.getElementById('modalTitle').textContent = t.cartTitle;
   document.getElementById('modalBody').innerHTML = `${rows}
-    <div class="li"><span>Envío ${free?'<span class="ship-free">gratis</span>':''}</span><span>${free?'0,00 €':fmt(ship)}</span></div>
-    ${!free?`<div style="font-size:12px;color:#6B675F;margin:2px 0 6px">Te faltan ${fmt(59-sub)} para el envío gratis.</div>`:''}
-    <div class="li tot"><span>Total</span><span class="price">${fmt(sub+ship)}</span></div>
-    <button class="btn3d" style="width:100%;margin-top:6px" onclick="checkout()">Ir a pagar · ${fmt(sub+ship)}</button>
-    <p class="secure-note">Pago 100% seguro · IVA incluido</p>`;
+    <div class="li"><span>${t.shipping} ${free?`<span class="ship-free">${t.free}</span>`:''}</span><span>${free?fmt(0):fmt(ship)}</span></div>
+    ${!free?`<div style="font-size:12px;color:#6B675F;margin:2px 0 6px">${t.missing(fmt(59-sub))}</div>`:''}
+    <div class="li tot"><span>${t.total}</span><span class="price">${fmt(sub+ship)}</span></div>
+    <button class="btn3d" style="width:100%;margin-top:6px" onclick="checkout()">${t.gopay(fmt(sub+ship))}</button>
+    <p class="secure-note">${t.secure}</p>`;
 }
-
 function checkout(){
-  const sub = subtotal(), ship = sub >= 59 ? 0 : 4.99, total = sub + ship;
-  document.getElementById('modalTitle').textContent = 'Finalizar compra';
+  const t = T[lang], sub = subtotal(), ship = sub>=59?0:4.99, total = sub+ship;
+  document.getElementById('modalTitle').textContent = t.checkoutTitle;
   document.getElementById('modalBody').innerHTML = `
-    <div class="li tot" style="border:none;margin:0;padding:0 0 6px"><span>Total a pagar</span><span class="price">${fmt(total)}</span></div>
-    <div class="paytitle">Método de pago</div>
-    <div class="payopt sel" data-m="bizum" onclick="selPay(this)"><span class="ic" style="background:#00C3E3">Bz</span> Bizum <span class="badge">El más usado en España</span></div>
-    <div class="payopt" data-m="card" onclick="selPay(this)"><span class="ic" style="background:#1A1A1C">··</span> Tarjeta <span class="badge">Visa · Mastercard</span></div>
-    <div class="payopt" data-m="paypal" onclick="selPay(this)"><span class="ic" style="background:#003087">PP</span> PayPal <span class="badge">Protección al comprador</span></div>
-    <button class="btn3d" style="width:100%;margin-top:8px" onclick="pay()">Pagar ${fmt(total)}</button>
-    <p class="secure-note">Conexión cifrada · Tus datos están protegidos</p>`;
+    <div class="li tot" style="border:none;margin:0;padding:0 0 6px"><span>${t.totalpay}</span><span class="price">${fmt(total)}</span></div>
+    <div class="paytitle">${t.method}</div>
+    <div class="payopt sel" data-m="bizum" onclick="selPay(this)"><span class="ic" style="background:#00C3E3">Bz</span> Bizum <span class="badge">${t.bizumB}</span></div>
+    <div class="payopt" data-m="card" onclick="selPay(this)"><span class="ic" style="background:#1A1A1C">··</span> ${lang==='en'?'Card':'Tarjeta'} <span class="badge">${t.cardB}</span></div>
+    <div class="payopt" data-m="paypal" onclick="selPay(this)"><span class="ic" style="background:#003087">PP</span> PayPal <span class="badge">${t.ppB}</span></div>
+    <button class="btn3d" style="width:100%;margin-top:8px" onclick="pay()">${t.pay(fmt(total))}</button>
+    <p class="secure-note">${t.secure2}</p>`;
 }
 function selPay(el){
   document.querySelectorAll('.payopt').forEach(o => o.classList.remove('sel'));
   el.classList.add('sel'); payMethod = el.dataset.m;
 }
 function pay(){
-  const L = { bizum:'Bizum', card:'tarjeta', paypal:'PayPal' };
-  document.getElementById('modalTitle').textContent = '¡Pedido confirmado!';
+  const t = T[lang];
+  const names = { bizum:'Bizum', card:t.tarjeta, paypal:'PayPal' };
+  document.getElementById('modalTitle').textContent = t.okTitle;
   document.getElementById('modalBody').innerHTML = `<div class="done"><div class="ok"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0FB5A6" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div>
-    <h3 style="font-family:'Fraunces';font-size:21px;margin-bottom:6px">Gracias por tu compra</h3>
-    <p style="color:#6B675F;font-size:14px;margin:0">Pago con ${L[payMethod]} recibido. Te enviaremos la confirmación y el seguimiento por email. Entrega estimada: 24–48 h.</p></div>
-    <button class="btn3d" style="width:100%;margin-top:14px" onclick="resetCart()">Seguir comprando</button>`;
+    <h3 style="font-family:'Fraunces';font-size:21px;margin-bottom:6px">${t.thanks}</h3>
+    <p style="color:#6B675F;font-size:14px;margin:0">${t.okText(names[payMethod])}</p></div>
+    <button class="btn3d" style="width:100%;margin-top:14px" onclick="resetCart()">${t.keep}</button>`;
 }
 function resetCart(){ cart = []; document.getElementById('cartCount').textContent = '0'; closeModal(); }
 function show(){ document.getElementById('overlay').classList.add('open'); }
 function closeModal(){ document.getElementById('overlay').classList.remove('open'); }
 function scrollTo2(id){ document.getElementById(id).scrollIntoView(); }
 
-let current = { name:'Climatizador Evaporativo', price:64.99, fn:()=>buy('Climatizador Evaporativo Airvecove',64.99) };
-function stickyBuy(){ current.fn(); }
+/* ---------- STICKY ---------- */
+function updateSticky(){
+  const t = T[lang];
+  document.getElementById('stickyName').textContent = t[curKey];
+  document.getElementById('stickyPrice').textContent = fmt(curPrice[curKey]);
+  document.getElementById('stickyBtn').textContent = t.stickyBuy;
+  document.getElementById('stickyBtn').className = 'btn3d' + (curKey==='zap' ? ' coral' : '');
+  document.getElementById('stickySub').textContent = t.stickySub;
+}
+function stickyBuy(){ curKey==='zap' ? buyZapatero() : buy(lang==='en'?'Evaporative Cooler Airvecove':'Climatizador Evaporativo Airvecove', 64.99); }
 
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('overlay').addEventListener('click', e => { if(e.target.id === 'overlay') closeModal(); });
   document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
 
-  // sticky bar tracks which product is in view
   const secObserver = new IntersectionObserver(es => es.forEach(e => {
-    if(e.isIntersecting){
-      if(e.target.id === 'zapatero'){
-        current = { name:'Zapatero Modular', price:49.99, fn:buyZapatero };
-        document.getElementById('stickyName').textContent = 'Zapatero Modular';
-        document.getElementById('stickyPrice').textContent = '49,99 €';
-        document.getElementById('stickyBtn').className = 'btn3d coral';
-      } else if(e.target.id === 'climatizador'){
-        current = { name:'Climatizador Evaporativo', price:64.99, fn:()=>buy('Climatizador Evaporativo Airvecove',64.99) };
-        document.getElementById('stickyName').textContent = 'Climatizador Evaporativo';
-        document.getElementById('stickyPrice').textContent = '64,99 €';
-        document.getElementById('stickyBtn').className = 'btn3d';
-      }
-    }
+    if(e.isIntersecting){ curKey = e.target.id === 'zapatero' ? 'zap' : 'clim'; updateSticky(); }
   }), { threshold:.4 });
   ['climatizador','zapatero'].forEach(id => secObserver.observe(document.getElementById(id)));
 
-  // show sticky after hero
   const heroObs = new IntersectionObserver(es => es.forEach(e => {
     document.getElementById('sticky').classList.toggle('show', !e.isIntersecting);
   }), { threshold:0 });
   heroObs.observe(document.querySelector('.hero'));
 
-  // reveal-on-scroll
   const reveals = document.querySelectorAll('.reveal');
   if('IntersectionObserver' in window){
     const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); }), { threshold:.12 });
     reveals.forEach(el => io.observe(el));
-  } else {
-    reveals.forEach(el => el.classList.add('in'));
-  }
-  // Fallback: garante que tudo apareça mesmo se o observer não disparar
+  } else { reveals.forEach(el => el.classList.add('in')); }
   window.addEventListener('load', () => setTimeout(() => {
     document.querySelectorAll('.reveal:not(.in)').forEach(el => {
       if(el.getBoundingClientRect().top < window.innerHeight + 200) el.classList.add('in');
     });
   }, 300));
+
+  updateSticky();
 });
