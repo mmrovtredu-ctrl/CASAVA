@@ -6,7 +6,7 @@ let zapCap = '28 pares';
 let payMethod = 'bizum';
 let curKey = 'clim';
 const curPrice = { clim: 64.99, zap: 49.99 };
-const EXTS = ['.jpg', '.jpeg', '.png', '.webp', '.JPG', '.PNG'];
+const EXTS = ['.jpeg', '.jpg', '.png', '.webp', '.JPEG', '.JPG', '.PNG'];
 
 const T = {
   es:{
