@@ -23,6 +23,14 @@ img{max-width:100%}
 .btn3d.coral:active{box-shadow:0 2px 0 var(--coral-d),0 6px 12px rgba(255,122,89,.3)}
 .btn3d.ink{background:linear-gradient(180deg,#2C2C30,#1A1A1C);box-shadow:0 6px 0 #000,0 14px 24px rgba(0,0,0,.3)}
 .btn3d:focus-visible{outline:3px solid #0A8E83;outline-offset:3px}
+
+/* CTA chamativo (pulsante) */
+.cta-buy{font-size:17px;letter-spacing:.01em;animation:ctaPulse 2.2s ease-in-out infinite}
+.cta-buy:hover,.cta-buy:active{animation:none}
+@keyframes ctaPulse{0%,100%{box-shadow:0 6px 0 var(--teal-d),0 14px 24px rgba(15,181,166,.34)}50%{box-shadow:0 6px 0 var(--teal-d),0 18px 42px rgba(15,181,166,.7)}}
+.cta-buy.coral{animation:ctaPulseC 2.2s ease-in-out infinite}
+@keyframes ctaPulseC{0%,100%{box-shadow:0 6px 0 var(--coral-d),0 14px 24px rgba(255,122,89,.34)}50%{box-shadow:0 6px 0 var(--coral-d),0 18px 42px rgba(255,122,89,.7)}}
+
 .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line);border-radius:14px;padding:15px 24px;font-family:inherit;font-weight:700;font-size:15px;cursor:pointer;transition:border-color .2s,transform .15s;min-height:50px}
 .btn-ghost:hover{border-color:var(--ink);transform:translateY(-1px)}
 
@@ -60,7 +68,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(252,251,248,.85);backdro
 .hero-mini span{display:flex;align-items:center;gap:7px}
 .hero-mini svg{color:var(--teal-d);flex:none}
 
-/* ===== PRODUCT SECTION ===== */
+/* ===== PRODUCT ===== */
 .product{padding:80px 0;border-top:1px solid var(--line)}
 .product .grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
 .product.rev .grid{direction:rtl}.product.rev .grid > *{direction:ltr}
@@ -68,7 +76,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(252,251,248,.85);backdro
 .pmain{aspect-ratio:1;border-radius:26px;background:linear-gradient(155deg,#EAF8F5,#FDF1EC);box-shadow:var(--shadow);display:grid;place-items:center;overflow:hidden;position:relative}
 .pmain.coral{background:linear-gradient(155deg,#FFF1EC,#F3F8F1)}
 .pmain .illo{width:72%;z-index:0}
-.pphoto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;display:block}
+.pphoto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;display:none}
 .float-chip{position:absolute;z-index:2;background:#fff;border-radius:14px;padding:11px 15px;box-shadow:var(--shadow);font-size:13px;font-weight:700;display:flex;align-items:center;gap:9px}
 .float-chip svg{color:var(--teal-d)}
 .float-chip.c1{top:18px;left:18px;animation:floaty 6s ease-in-out infinite}
@@ -102,15 +110,15 @@ header{position:sticky;top:0;z-index:50;background:rgba(252,251,248,.85);backdro
 .vopt b{display:block;font-size:16px;font-family:'Fraunces'}
 .vopt span{font-size:11.5px;color:var(--muted)}
 
-.buybar{display:flex;align-items:center;gap:18px;flex-wrap:wrap;background:var(--cream);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;box-shadow:var(--shadow-sm)}
-.priceblock{display:flex;flex-direction:column}
+.buybar{background:var(--cream);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;box-shadow:var(--shadow-sm)}
+.priceblock{display:flex;flex-direction:column;margin-bottom:14px}
 .price{font-family:'Fraunces';font-size:36px;font-weight:600;line-height:1}
 .price small{font-size:17px}
 .price-row{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
 .price-old{font-size:16px;color:var(--muted);text-decoration:line-through}
 .save{font-size:12px;font-weight:800;color:var(--coral-d);background:#FFE6DD;border-radius:6px;padding:3px 8px;margin-top:5px;align-self:flex-start}
 .ivanote{font-size:12px;color:var(--muted);margin-top:3px}
-.buybar .btn3d{flex:1;min-width:200px}
+.buybar .cta-buy{width:100%}
 
 .specs{margin-top:26px;border-top:1px solid var(--line)}
 .specrow{border-bottom:1px solid var(--line)}
@@ -143,11 +151,10 @@ header{position:sticky;top:0;z-index:50;background:rgba(252,251,248,.85);backdro
 .guarantee h2{font-size:clamp(26px,4vw,30px);margin-bottom:12px}
 .guarantee p{color:var(--muted);font-size:16px;margin:0 auto 22px;max-width:520px}
 
-/* reveal — gated by .js so content is ALWAYS visible if JS fails */
 .js .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}
 .js .reveal.in{opacity:1;transform:none}
 
-/* sticky buy bar */
+/* sticky */
 .sticky{position:fixed;left:0;right:0;bottom:-100px;z-index:45;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-top:1px solid var(--line);box-shadow:0 -8px 30px rgba(0,0,0,.08);transition:bottom .35s ease;padding-bottom:env(safe-area-inset-bottom)}
 .sticky.show{bottom:0}
 .sticky .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 24px}
@@ -189,7 +196,6 @@ footer .legal{padding-top:22px;font-size:12.5px;color:#7C786F;display:flex;justi
 .done{text-align:center;padding:18px 0}
 .done .ok{width:60px;height:60px;margin:0 auto 14px;border-radius:50%;background:#F0FAF8;display:grid;place-items:center}
 
-/* ===== TABLET ===== */
 @media(max-width:880px){
   .product .grid{grid-template-columns:1fr;gap:32px}
   .product.rev .grid{direction:ltr}
@@ -198,13 +204,8 @@ footer .legal{padding-top:22px;font-size:12.5px;color:#7C786F;display:flex;justi
   .why-grid{grid-template-columns:1fr 1fr}
   footer .top{grid-template-columns:1fr}
   .nav .links{display:none}
-  .product{padding:56px 0}
-  .hero{padding:54px 0 46px}
-  .why{padding:50px 0}
-  .guarantee{padding:50px 0}
+  .product{padding:56px 0}.hero{padding:54px 0 46px}.why{padding:50px 0}.guarantee{padding:50px 0}
 }
-
-/* ===== PHONE ===== */
 @media(max-width:560px){
   .wrap{padding:0 18px}
   .nav{height:62px;gap:8px}
@@ -223,8 +224,7 @@ footer .legal{padding-top:22px;font-size:12.5px;color:#7C786F;display:flex;justi
   .float-chip{font-size:11px;padding:8px 11px}
   .float-chip small{display:none}
   .thumb{width:54px;height:54px}
-  .buybar{flex-direction:column;align-items:stretch;padding:16px}
-  .buybar .btn3d{width:100%}
+  .buybar{padding:16px}
   .price{font-size:32px}
   .why-grid{grid-template-columns:1fr}
   .guarantee .box{padding:34px 22px}
